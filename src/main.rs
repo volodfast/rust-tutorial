@@ -3,8 +3,9 @@
 // mod guessing_game;
 // mod variables;
 // mod control_flow;
-mod ownership;
+// mod ownership;
+mod references_and_borrowing;
 
 fn main() {
-  ownership::main();
+  references_and_borrowing::main();
 }
