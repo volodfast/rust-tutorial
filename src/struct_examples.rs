@@ -2,6 +2,8 @@ pub fn main() {
   struct_instantiation();
 
   struct_builder();
+
+  tuple_struct_example();
 }
 
 struct User {
@@ -53,4 +55,14 @@ fn struct_builder() {
   let user = build_user(String::from("somerandom@email.com"), String::from("randy"));
 
   display_user(&user);
+}
+
+fn tuple_struct_example() {
+  struct Color(i32, i32, i32);
+  struct Point(i32, i32, i32);
+
+  let black = Color(0, 0, 0);
+  let origin = Point(0, 0, 0);
+
+  println!("{} {}", black.0, origin.0)
 }
