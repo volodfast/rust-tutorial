@@ -4,8 +4,9 @@
 // mod variables;
 // mod control_flow;
 // mod ownership;
-mod references_and_borrowing;
+// mod references_and_borrowing;
+mod struct_examples;
 
 fn main() {
-  references_and_borrowing::main();
+  struct_examples::main();
 }
