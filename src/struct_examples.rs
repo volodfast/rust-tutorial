@@ -4,6 +4,8 @@ pub fn main() {
   struct_builder();
 
   tuple_struct_example();
+
+  unit_like_struct();
 }
 
 struct User {
@@ -65,4 +67,10 @@ fn tuple_struct_example() {
   let origin = Point(0, 0, 0);
 
   println!("{} {}", black.0, origin.0)
+}
+
+fn unit_like_struct() {
+  struct AlwaysEqual;
+
+  let _subject = AlwaysEqual;
 }
