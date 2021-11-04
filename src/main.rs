@@ -6,8 +6,9 @@
 // mod ownership;
 // mod references_and_borrowing;
 // mod struct_examples;
-mod rectangles;
+// mod rectangles;
+mod rectangles_with_methods;
 
 fn main() {
-  rectangles::main();
+  rectangles_with_methods::main();
 }
