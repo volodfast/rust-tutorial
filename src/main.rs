@@ -5,8 +5,9 @@
 // mod control_flow;
 // mod ownership;
 // mod references_and_borrowing;
-mod struct_examples;
+// mod struct_examples;
+mod rectangles;
 
 fn main() {
-  struct_examples::main();
+  rectangles::main();
 }
