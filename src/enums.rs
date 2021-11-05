@@ -6,6 +6,8 @@ pub fn main() {
   match_example();
 
   match_with_option();
+
+  if_let_example();
 }
 
 fn enum_example() {
@@ -70,4 +72,11 @@ fn match_with_option() {
   let none = plus_one(None);
 
   println!("Five: {:?}, Six: {:?}, None: {:?}", five, six, none);
+}
+
+fn if_let_example() {
+  let config_max = Some(3u8);
+  if let Some(max) = config_max {
+    println!("The maximum is configured to be {}", max);
+  }
 }
