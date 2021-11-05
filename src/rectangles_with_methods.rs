@@ -1,5 +1,7 @@
 pub fn main() {
   method_in_rectangle();
+
+  associated_functions();
 }
 
 fn method_in_rectangle() {
@@ -41,4 +43,25 @@ fn method_in_rectangle() {
 
   println!("Can rect1 hold rect2? {}", rect1.can_hold(&rect2));
   println!("Can rect1 hold rect3? {}", rect1.can_hold(&rect3));
+}
+
+fn associated_functions() {
+  #[derive(Debug)]
+  struct Rectangle {
+    height: u32,
+    width: u32,
+  }
+
+  impl Rectangle {
+    fn square(size: u32) -> Rectangle {
+      Rectangle {
+        width: size,
+        height: size,
+      }
+    }
+  }
+
+  let rect = Rectangle::square(30);
+
+  println!("Square: {:#?}", rect);
 }
