@@ -8,8 +8,9 @@
 // mod struct_examples;
 // mod rectangles;
 // mod rectangles_with_methods;
-mod enums;
+// mod enums;
+mod inner;
 
 fn main() {
-  enums::main();
+  inner::main();
 }
