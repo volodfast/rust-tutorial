@@ -9,8 +9,9 @@
 // mod rectangles;
 // mod rectangles_with_methods;
 // mod enums;
-mod inner;
+// mod inner;
+mod collections;
 
 fn main() {
-  inner::main();
+  collections::main();
 }
