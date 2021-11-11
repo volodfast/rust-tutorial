@@ -10,8 +10,9 @@
 // mod rectangles_with_methods;
 // mod enums;
 // mod inner;
-mod collections;
+// mod collections;
+mod error_handling;
 
 fn main() {
-  collections::main();
+  error_handling::main();
 }
