@@ -11,8 +11,9 @@
 // mod enums;
 // mod inner;
 // mod collections;
-mod error_handling;
+// mod error_handling;
+mod generics_traits_lifetime;
 
 fn main() {
-  error_handling::main();
+  generics_traits_lifetime::main();
 }
