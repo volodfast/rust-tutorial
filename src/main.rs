@@ -12,8 +12,9 @@
 // mod inner;
 // mod collections;
 // mod error_handling;
-mod generics_traits_lifetime;
+// mod generics_traits_lifetime;
+mod testing;
 
 fn main() {
-  generics_traits_lifetime::main();
+  testing::main();
 }
