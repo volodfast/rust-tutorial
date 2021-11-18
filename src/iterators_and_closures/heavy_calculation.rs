@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use std::thread;
 use std::time::Duration;
 
@@ -8,31 +9,34 @@ pub fn main() {
   generate_workout(simulated_user_specified_value, simulated_random_number);
 }
 
-struct Cacher<T>
+struct Cacher<T, A, R>
 where
-  T: Fn(u32) -> u32,
+  T: Fn(A) -> R,
 {
   calculation: T,
-  value: Option<u32>,
+  hash: HashMap<A, R>,
 }
 
-impl<T> Cacher<T>
+impl<T, A, R> Cacher<T, A, R>
 where
-  T: Fn(u32) -> u32,
+  T: Fn(A) -> R,
+  A: std::cmp::Eq + std::hash::Hash + std::clone::Clone,
+  R: std::clone::Clone,
 {
   fn new(calculation: T) -> Self {
     Self {
       calculation,
-      value: None,
+      hash: HashMap::new(),
     }
   }
 
-  fn value(&mut self, arg: u32) -> u32 {
-    match self.value {
-      Some(v) => v,
+  fn value(&mut self, arg: A) -> R {
+    match self.hash.get(&arg) {
+      Some(v) => v.clone(),
       None => {
-        let v = (self.calculation)(arg);
-        self.value = Some(v);
+        let result = (self.calculation)(arg.clone());
+        let v = result.clone();
+        self.hash.insert(arg.clone(), result);
         v
       }
     }
@@ -59,5 +63,20 @@ fn generate_workout(intensity: u32, random_number: u32) {
         expensive_result.value(intensity)
       );
     }
+  }
+}
+
+#[cfg(test)]
+mod tests {
+  use super::*;
+
+  #[test]
+  fn cacher_stores_different_key_values() {
+    let mut cache1 = Cacher::new(|n| n + 1);
+
+    let mut cache2 = Cacher::new(|str: &str| format!("{} world", str.clone()));
+
+    assert_eq!(cache1.value(1), 2);
+    assert_eq!(cache2.value("hello"), "hello world");
   }
 }
