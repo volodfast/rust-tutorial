@@ -8,6 +8,37 @@ pub fn main() {
   generate_workout(simulated_user_specified_value, simulated_random_number);
 }
 
+struct Cacher<T>
+where
+  T: Fn(u32) -> u32,
+{
+  calculation: T,
+  value: Option<u32>,
+}
+
+impl<T> Cacher<T>
+where
+  T: Fn(u32) -> u32,
+{
+  fn new(calculation: T) -> Self {
+    Self {
+      calculation,
+      value: None,
+    }
+  }
+
+  fn value(&mut self, arg: u32) -> u32 {
+    match self.value {
+      Some(v) => v,
+      None => {
+        let v = (self.calculation)(arg);
+        self.value = Some(v);
+        v
+      }
+    }
+  }
+}
+
 fn generate_workout(intensity: u32, random_number: u32) {
   let expensive_result = |num| {
     println!("calculating slowly...");
