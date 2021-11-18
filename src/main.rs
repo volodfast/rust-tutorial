@@ -13,8 +13,9 @@
 // mod collections;
 // mod error_handling;
 // mod generics_traits_lifetime;
-mod testing;
+// mod testing;
+mod iterators_and_closures;
 
 fn main() {
-  testing::main();
+  iterators_and_closures::main();
 }
