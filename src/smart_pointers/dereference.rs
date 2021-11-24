@@ -4,6 +4,7 @@ pub fn main() {
   dereference_basics();
   using_box_like_reference();
   custom_made_smart_pointer();
+  implicit_deref_coercions();
 }
 
 fn dereference_basics() {
@@ -44,4 +45,16 @@ fn custom_made_smart_pointer() {
 
   assert_eq!(5, x);
   assert_eq!(5, *y);
+}
+
+fn implicit_deref_coercions() {
+  fn hello(name: &str) {
+    println!("Hello, {}!", name);
+  }
+
+  let m = MyBox::new(String::from("Rust"));
+  hello(&m);
+
+  let n = MyBox::new(String::from("World"));
+  hello(&(*n)[..]);
 }
