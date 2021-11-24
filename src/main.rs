@@ -14,8 +14,9 @@
 // mod error_handling;
 // mod generics_traits_lifetime;
 // mod testing;
-mod iterators_and_closures;
+// mod iterators_and_closures;
+mod smart_pointers;
 
 fn main() {
-  iterators_and_closures::main();
+  smart_pointers::main();
 }
