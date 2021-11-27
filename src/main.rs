@@ -15,8 +15,9 @@
 // mod generics_traits_lifetime;
 // mod testing;
 // mod iterators_and_closures;
-mod smart_pointers;
+// mod smart_pointers;
+mod concurency;
 
 fn main() {
-  smart_pointers::main();
+  concurency::main();
 }
