@@ -1,7 +1,8 @@
 pub fn main() {
   // thread_basics();
   // move_values_in_thread_closure();
-  message_between_threads();
+  // message_between_threads();
+  multiple_message();
 }
 
 #[allow(dead_code)]
@@ -51,4 +52,31 @@ fn message_between_threads() {
 
   let received = rx.recv().unwrap();
   println!("Got: {}", received);
+}
+
+#[allow(dead_code)]
+fn multiple_message() {
+  use std::sync::mpsc;
+  use std::thread;
+  use std::time::Duration;
+
+  let (tx, rx) = mpsc::channel();
+
+  thread::spawn(move || {
+    let vals = vec![
+      String::from("hi"),
+      String::from("from"),
+      String::from("the"),
+      String::from("thread"),
+    ];
+
+    for val in vals {
+      tx.send(val).unwrap();
+      thread::sleep(Duration::from_secs(1));
+    }
+  });
+
+  for recived in rx {
+    println!("Got: {}", recived);
+  }
 }
