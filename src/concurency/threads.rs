@@ -1,8 +1,10 @@
 pub fn main() {
-  thread_basics();
-  move_values_in_thread_closure();
+  // thread_basics();
+  // move_values_in_thread_closure();
+  message_between_threads();
 }
 
+#[allow(dead_code)]
 fn thread_basics() {
   use std::thread;
   use std::time::Duration;
@@ -22,6 +24,7 @@ fn thread_basics() {
   handle.join().unwrap();
 }
 
+#[allow(dead_code)]
 fn move_values_in_thread_closure() {
   use std::thread;
 
@@ -32,4 +35,20 @@ fn move_values_in_thread_closure() {
   });
 
   handle.join().unwrap();
+}
+
+#[allow(dead_code)]
+fn message_between_threads() {
+  use std::sync::mpsc;
+  use std::thread;
+
+  let (tx, rx) = mpsc::channel();
+
+  thread::spawn(move || {
+    let val = String::from("hi");
+    tx.send(val).unwrap();
+  });
+
+  let received = rx.recv().unwrap();
+  println!("Got: {}", received);
 }
