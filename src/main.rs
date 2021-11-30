@@ -16,8 +16,9 @@
 // mod testing;
 // mod iterators_and_closures;
 // mod smart_pointers;
-mod concurency;
+// mod concurency;
+mod object_oriented;
 
 fn main() {
-  concurency::main();
+  object_oriented::main();
 }
