@@ -17,8 +17,9 @@
 // mod iterators_and_closures;
 // mod smart_pointers;
 // mod concurency;
-mod object_oriented;
+// mod object_oriented;
+mod patterns_and_matching;
 
 fn main() {
-  object_oriented::main();
+  patterns_and_matching::main();
 }
