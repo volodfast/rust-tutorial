@@ -4,6 +4,8 @@ pub fn main() {
   destructuring_struct();
   matching_enum();
   destructuring_nested_structs_and_enums();
+  extra_conditionals_with_match_guards();
+  at_bindings();
 }
 
 fn basic() {
@@ -82,5 +84,33 @@ fn destructuring_nested_structs_and_enums() {
       h, s, v
     ),
     _ => (),
+  }
+}
+
+fn extra_conditionals_with_match_guards() {
+  let num = Some(4);
+
+  match num {
+    Some(x) if x < 5 => println!("less than five: {}", x),
+    Some(x) => println!("{}", x),
+    None => (),
+  }
+}
+
+fn at_bindings() {
+  enum Message {
+    Hello { id: i32 },
+  }
+
+  let msg = Message::Hello { id: 5 };
+
+  match msg {
+    Message::Hello {
+      id: id_variable @ 3..=7,
+    } => println!("Found an id in range: {}", id_variable),
+    Message::Hello { id: 10..=12 } => {
+      println!("Found an id in another range")
+    }
+    Message::Hello { id } => println!("Found some other id: {}", id),
   }
 }
