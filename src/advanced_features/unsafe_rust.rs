@@ -65,6 +65,7 @@ fn safe_abstraction() {
 }
 
 fn extern_basics() {
+  // from C language
   extern "C" {
     fn abs(input: i32) -> i32;
   }
