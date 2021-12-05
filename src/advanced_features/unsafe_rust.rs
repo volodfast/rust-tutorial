@@ -2,6 +2,7 @@ pub fn main() {
   raw_pointers();
   unsafe_functions();
   safe_abstraction();
+  extern_basics();
 }
 
 fn raw_pointers() {
@@ -61,4 +62,14 @@ fn safe_abstraction() {
   }
 
   safe_functionality();
+}
+
+fn extern_basics() {
+  extern "C" {
+    fn abs(input: i32) -> i32;
+  }
+
+  unsafe {
+    println!("Absolure value of -3 according to C: {}", abs(-3));
+  }
 }
