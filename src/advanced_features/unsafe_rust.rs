@@ -3,6 +3,7 @@ pub fn main() {
   unsafe_functions();
   safe_abstraction();
   extern_basics();
+  static_variables();
 }
 
 fn raw_pointers() {
@@ -72,5 +73,21 @@ fn extern_basics() {
 
   unsafe {
     println!("Absolure value of -3 according to C: {}", abs(-3));
+  }
+}
+
+fn static_variables() {
+  static mut COUNTER: u32 = 0;
+
+  fn add_to_count(inc: u32) {
+    unsafe {
+      COUNTER += inc;
+    }
+  }
+
+  add_to_count(3);
+
+  unsafe {
+    println!("COUNTER: {}", COUNTER);
   }
 }
